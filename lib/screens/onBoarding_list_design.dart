@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:on_boarding_task/page_design.dart';
+import 'package:on_boarding_task/component/button.dart';
+import 'package:on_boarding_task/component/page_design.dart';
+import 'package:on_boarding_task/screens/sign_in.dart';
 import 'package:onboarding/onboarding.dart';
 
 String title1='Get food delivery to your doorstep asap';
@@ -12,10 +13,10 @@ class OnBoarding extends StatelessWidget {
   OnBoarding({Key? key}) : super(key: key);
   int index=0;
   final onboardingPagesList = [
-    PageModel(widget: PageDesign(title: title1, body: body1,)),
-    PageModel(widget: PageDesign(title: title2,body: body2,)),
+    PageModel(widget: PageDesign(title: title1, body: body1,imgUrl: 'images/on_way.svg',)),
+    PageModel(widget: PageDesign(title: title2,body: body2,imgUrl: 'images/order_delivery.svg',)),
   ];
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,26 +53,7 @@ class OnBoarding extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                on_board(index, onboardingPagesList),
-                Container(
-                  width: double.infinity,
-                  height: 100,
-                  padding: EdgeInsets.all(20),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Get Started',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.teal),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                Button(text: 'Get Started',function: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignIn())),color: Colors.teal,),
                 RichText(
                   text: TextSpan(
                     text: 'Don\'t have an account? ',
@@ -93,7 +75,7 @@ class OnBoarding extends StatelessWidget {
 Widget on_board(var index,var onboardingPagesList){
   return Container(
           color: Colors.white,
-          height: 550,
+          height: 500,
           child:Onboarding(
                 pages: onboardingPagesList,
                 onPageChange: (int pageIndex) {
@@ -126,4 +108,3 @@ Widget on_board(var index,var onboardingPagesList){
               ) ,
         );
       }
-// child:
