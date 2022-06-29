@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:on_boarding_task/component/button.dart';
 import 'package:on_boarding_task/component/page_design.dart';
 import 'package:on_boarding_task/screens/sign_in.dart';
+import 'package:on_boarding_task/screens/sign_up.dart';
 import 'package:onboarding/onboarding.dart';
 
 String title1='Get food delivery to your doorstep asap';
@@ -54,14 +55,17 @@ class OnBoarding extends StatelessWidget {
               children: [
                on_board(index, onboardingPagesList),
                 Button(text: 'Get Started',function: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignIn())),color: Colors.teal,),
-                RichText(
-                  text: TextSpan(
-                    text: 'Don\'t have an account? ',
-                    style: TextStyle(fontSize: 20, color: Colors.black),
-                    children: const <TextSpan>[
-                      TextSpan(
-                          text: 'Sign Up', style: TextStyle(color: Colors.teal)),
-                    ],
+                InkWell(
+                  onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUp())),
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'Don\'t have an account? ',
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      children: const <TextSpan>[
+                        TextSpan(
+                            text: 'Sign Up', style: TextStyle(color: Colors.teal)),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(height: 10,)
