@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:on_boarding_task/component/country_field.dart';
+import 'package:on_boarding_task/component/google_button.dart';
 import 'package:on_boarding_task/screens/sign_up.dart';
 
 import '../component/button.dart';
@@ -23,10 +24,10 @@ class SignIn extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Form(
-          key: formKey,
-          child: Padding(
-            padding: EdgeInsets.all(20),
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Form(
+            key: formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -91,15 +92,10 @@ class SignIn extends StatelessWidget {
                     ),
                   ],
                 ),
-                Button(
-                  text: 'Sign in with google',
-                  function: () {},
-                  color: Colors.white,
-                  borderColor: Colors.blueAccent,
-                  textColor: Colors.blueAccent,
-                ),
+                GoogleButton(),
                 InkWell(
-                  onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUp())),
+                  onTap: () => Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => SignUp())),
                   child: RichText(
                     text: TextSpan(
                       text: 'Doesn\'t have any account? ',
@@ -112,11 +108,13 @@ class SignIn extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 30,),
+                SizedBox(
+                  height: 30,
+                ),
                 Text(
                   'Use the application according to Policy roles. Any kind of violations will be subject to sanctions',
                   style: TextStyle(fontSize: 15, color: Colors.black38),
-                  textAlign: TextAlign.start,
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),
